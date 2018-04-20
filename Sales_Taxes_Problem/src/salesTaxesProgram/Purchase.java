@@ -3,12 +3,17 @@ package salesTaxesProgram;
 import java.util.ArrayList;
 import java.util.StringTokenizer;
 
-public class Purchase extends Product {
+import factoryTax.FactoryTax;
+
+public class Purchase extends ProductBase {
 
 	private int quantity;
 	
+	private Product product;
+	
 	public Purchase (int quantity, String description, double price) {
 		super(description, price);
+		this.product = new ProductBase(description, price);
 		if (quantity <= 0) {
 			this.quantity = 1;
 			return ;
@@ -20,8 +25,14 @@ public class Purchase extends Product {
 		return this.quantity;
 	}
 	
+	public Product getProduct() {
+		return this.product;
+	}
+	
 	public String getPricePurchase() {
-		double d = this.quantity * TaxCalculator.getPriceWithTax(this);
+		Product product = FactoryTax.create(this.getProduct());
+		
+		double d = this.quantity * product.getPriceWithTax();
 		return Round.format(d);
 	}
 	

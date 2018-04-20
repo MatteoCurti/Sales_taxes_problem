@@ -2,32 +2,34 @@ package junit;
 
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
+
 import salesTaxesProgram.Product;
+import salesTaxesProgram.ProductBase;
 import salesTaxesProgram.Purchase;
 
 class ProductTest {
 
 	@Test
 	void testBook() {
-		Product p = new Product("book", 12.49);
+		Product p = new ProductBase("book", 12.49);
 		assertEquals("book 12.49", p.getDescription() + " " + p.getPrice());
 	}
 	
 	@Test
 	void testMusic() {
-		Product p = new Product("music CD", 14.99);
+		Product p = new ProductBase("music CD", 14.99);
 		assertEquals("music CD 14.99", p.getDescription() + " " + p.getPrice());
 	}
 	
 	@Test
 	void testBar() {
-		Product p = new Product("chocolate bar", 0.85);
+		Product p = new ProductBase("chocolate bar", 0.85);
 		assertEquals("chocolate bar 0.85", p.getDescription() + " " + p.getPrice());
 	}
 	
 	@Test
 	void testNegativePrice() {
-		Product p = new Product("book", -12.49);
+		Product p = new ProductBase("book", -12.49);
 		assertEquals("Error price 0.0", p.getDescription() + " " + p.getPrice());
 	}
 	
@@ -99,14 +101,15 @@ class ProductTest {
 	
 	@Test
 	void testMusicExpense() {
-		Purchase a = Purchase.parse("1 music CD at 14.99");
+		Purchase a = Purchase.parse("1 music CD at 14.99");		
+		//a.setProduct(FactoryTax.create(a.getProduct()));
 		assertEquals("1 music CD: 16.49", a.getQuantity() + " " + a.getDescription() + ": " + a.getPricePurchase());
 	}
-	/*
+	
 	@Test
 	void testBarExpense() {
 		Purchase a = Purchase.parse("1 chocolate bar at 0.85");
 		assertEquals("1 chocolate bar: 0.85", a.getQuantity() + " " + a.getDescription() + ": " + a.getPricePurchase());	
 	}
-	*/
+	
 }
