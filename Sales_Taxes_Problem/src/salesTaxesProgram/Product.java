@@ -1,5 +1,9 @@
 package salesTaxesProgram;
 
+import java.util.ArrayList;
+
+import exemptProduct.ExemptProduct;
+
 public class Product {
 	
 	private String description;
@@ -19,8 +23,12 @@ public class Product {
 
 	private boolean isExempt(String description) {
 		
-		if(description.contains("book")) return true;
-		if(description.contains("chocolate")) return true;
+		ArrayList<String> al = ExemptProduct.List();
+		
+		for (int i = 0 ; i < al.size(); i++)
+			if(description.contains(al.get(i))) 
+				return true;
+		
 		return false;
 		
 	}
