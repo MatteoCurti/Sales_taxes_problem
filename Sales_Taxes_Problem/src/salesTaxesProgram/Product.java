@@ -6,6 +6,10 @@ public class Product {
 	private double price;
 	
 	public  Product(String description, double price) {
+		if (price<0.0) {
+			this.description = "Error price";
+			return ;
+		}
 		this.description = description;
 		this.price = price;
 	}
