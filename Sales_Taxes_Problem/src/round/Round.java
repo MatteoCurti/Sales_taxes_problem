@@ -1,5 +1,6 @@
 package round;
 
+import java.math.BigDecimal;
 import java.text.DecimalFormat;
 
 public class Round {
@@ -10,4 +11,13 @@ public class Round {
         s = s.replace(",", ".");
         return s;
 	}
+	
+	public static double to05(double d) {
+		d = Math.ceil(d / 0.05) * 0.05;
+		BigDecimal bd = new BigDecimal(d);
+		bd = bd.setScale(2, BigDecimal.ROUND_HALF_UP);
+		d = bd.doubleValue();
+		return d;
+	}
+
 }
