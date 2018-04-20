@@ -139,11 +139,11 @@ class ProductTest {
 		Purchase a = Purchase.parse("1 imported box of chocolates at 10.00");
 		assertEquals("1 imported box of chocolates: 10.50", a.getQuantity() + " " + a.getDescription() + ": " + a.getPricePurchase());
 	}
-	/*
+	
 	@Test
 	void testPerfume() {
 		Purchase a = Purchase.parse("1 imported bottle of perfume at 47.50");
 		assertEquals("1 imported bottle of perfume: 54.65", a.getQuantity() + " " + a.getDescription() + ": " + a.getPricePurchase());
 	}
-	*/
+	
 }
