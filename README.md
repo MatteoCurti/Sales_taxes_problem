@@ -9,4 +9,4 @@ If the indicated file isn't found, you can enter another one from keyboard input
 
 The input string that describes the purchase requires the following format:
 
-quanity any_kind_of_description at price
+quantity any_kind_of_description at price
