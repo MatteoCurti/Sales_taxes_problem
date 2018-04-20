@@ -12,7 +12,7 @@ public class SalesTaxProgram {
 	public static void main(String[] args) {
 		String file;
 		
-		if (args.length != 2) {
+		if (args.length != 1) {
 			BufferedReader bsr = new BufferedReader(new InputStreamReader(System.in)); 
 			System.out.println("Inserisci il nome del file di input: ");
 			try {
@@ -22,7 +22,7 @@ public class SalesTaxProgram {
 				e.printStackTrace();
 			}
 		} 	
-		else file = args[1];
+		else file = args[0];
 		
 		ArrayList<Purchase> al = new ArrayList<Purchase>();
 		try {
