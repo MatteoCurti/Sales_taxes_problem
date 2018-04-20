@@ -49,7 +49,12 @@ public class Purchase extends ProductBase {
 	    double price = Double.parseDouble(in.get(in.size()-1));
 	    
 	    String description = "";
-	     
+	    
+	    if(in.contains("imported")) {
+	    	description = " imported";
+	    	in.remove("imported");
+	    } 
+	    
 	    for(int i=1; i<in.size()-2; i++)
 	    	description = description.concat(" " + in.get(i));
 	    description = description.substring(1);	
