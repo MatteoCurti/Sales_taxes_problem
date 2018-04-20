@@ -78,17 +78,17 @@ class ProductTest {
 		Purchase a = Purchase.parse("2 book at 12.49");	
 		assertEquals(true, a.getExempt());
 	}
-	/*
+	
 	@Test
 	void testMusicExempt() {
 		Purchase a = Purchase.parse("1 music CD at 14.99");
 		assertEquals(false, a.getExempt());
 	}
-	/*
+	
 	@Test
 	void testBarExempt() {
 		Purchase a = Purchase.parse("1 chocolate bar at 0.85");
 		assertEquals(true, a.getExempt());
 	}
-	*/
+	
 }
