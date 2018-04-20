@@ -116,7 +116,7 @@ class ProductTest {
 	}
 	
 	@Test
-	void testTotalOutput() {
+	void testOutput1() {
 		ArrayList<Purchase> al = new ArrayList<Purchase>();
 		al.add(Purchase.parse("2 book at 12.49"));
 		al.add(Purchase.parse("1 music CD at 14.99"));
@@ -147,7 +147,7 @@ class ProductTest {
 	}
 	
 	@Test
-	void testOutput() {
+	void testOutput2() {
 		ArrayList<Purchase> al = new ArrayList<Purchase>();
 		al.add(Purchase.parse("1 imported box of chocolates at 10.00"));
 		al.add(Purchase.parse("1 imported bottle of perfume at 47.50"));
@@ -174,6 +174,26 @@ class ProductTest {
 	void testImportedEverywhere() {
 		Purchase a = Purchase.parse("3 box of imported chocolates at 11.25");
 		assertEquals("3 imported box of chocolates: 35.55", a.getQuantity() + " " + a.getDescription() + ": " + a.getPricePurchase());		
+	}
+	
+	@Test
+	void testOutput3() {
+		ArrayList<Purchase> al = new ArrayList<Purchase>();
+		al.add(Purchase.parse("1 imported bottle of perfume at 27.99"));
+		al.add(Purchase.parse("1 bottle of perfume at 18.99"));
+		al.add(Purchase.parse("1 packet of headache pills at 9.75"));
+		al.add(Purchase.parse("3 box of imported chocolates at 11.25"));
+				
+		Purchase p;
+		double totalPrice = 0.0;
+		double totalWithTax = 0.0;
+		for(int i = 0 ; i < al.size() ; i++) {
+			p = al.get(i); 
+			totalPrice += p.getPrice() * p.getQuantity();
+			totalWithTax += Double.parseDouble(p.getPricePurchase());
+		}
+		assertEquals("Sales Taxes: 7.90", "Sales Taxes: " + Round.format(totalWithTax - totalPrice));	
+		assertEquals("Total: 98.38", "Total: " + Round.format(totalWithTax));	
 	}
 	
 }
