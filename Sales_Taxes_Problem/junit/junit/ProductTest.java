@@ -169,11 +169,11 @@ class ProductTest {
 		Purchase a = Purchase.parse("1 packet of headache pills at 9.75");
 		assertEquals("1 packet of headache pills: 9.75", a.getQuantity() + " " + a.getDescription() + ": " + a.getPricePurchase());		
 	}
-	/*
+	
 	@Test
 	void testImportedEverywhere() {
 		Purchase a = Purchase.parse("3 box of imported chocolates at 11.25");
 		assertEquals("3 imported box of chocolates: 35.55", a.getQuantity() + " " + a.getDescription() + ": " + a.getPricePurchase());		
 	}
-	*/
+	
 }
