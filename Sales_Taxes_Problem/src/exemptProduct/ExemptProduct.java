@@ -10,6 +10,7 @@ public class ExemptProduct {
 		
 		al.add("book");
 		al.add("chocolate");
+		al.add("pills");
 		//al.add(" ... ");
 		
 		return al;
