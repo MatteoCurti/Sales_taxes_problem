@@ -96,7 +96,7 @@ class ProductTest {
 		Purchase a = Purchase.parse("2 book at 12.49");	
 		assertEquals("2 book: 24.98", a.getQuantity() + " " + a.getDescription() + ": " + a.getPricePurchase());
 	}
-	/*
+	
 	@Test
 	void testMusicExpense() {
 		Purchase a = Purchase.parse("1 music CD at 14.99");
