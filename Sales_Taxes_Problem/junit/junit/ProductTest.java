@@ -1,8 +1,12 @@
 package junit;
 
 import static org.junit.jupiter.api.Assertions.*;
+
+import java.util.ArrayList;
+
 import org.junit.jupiter.api.Test;
 
+import round.Round;
 import salesTaxesProgram.Product;
 import salesTaxesProgram.ProductBase;
 import salesTaxesProgram.Purchase;
@@ -102,7 +106,6 @@ class ProductTest {
 	@Test
 	void testMusicExpense() {
 		Purchase a = Purchase.parse("1 music CD at 14.99");		
-		//a.setProduct(FactoryTax.create(a.getProduct()));
 		assertEquals("1 music CD: 16.49", a.getQuantity() + " " + a.getDescription() + ": " + a.getPricePurchase());
 	}
 	
@@ -112,4 +115,35 @@ class ProductTest {
 		assertEquals("1 chocolate bar: 0.85", a.getQuantity() + " " + a.getDescription() + ": " + a.getPricePurchase());	
 	}
 	
+	@Test
+	void testTotalOutput() {
+		ArrayList<Purchase> al = new ArrayList<Purchase>();
+		al.add(Purchase.parse("2 book at 12.49"));
+		al.add(Purchase.parse("1 music CD at 14.99"));
+		al.add(Purchase.parse("1 chocolate bar at 0.85"));
+		
+		Purchase p;
+		double totalPrice = 0.0;
+		double totalWithTax = 0.0;
+		for(int i = 0 ; i < al.size() ; i++) {
+			p = al.get(i); 
+			totalPrice += p.getPrice() * p.getQuantity();
+			totalWithTax += Double.parseDouble(p.getPricePurchase());
+		}
+		assertEquals("Sales Taxes: 1.50", "Sales Taxes: " + Round.format(totalWithTax - totalPrice));	
+		assertEquals("Total: 42.32", "Total: " + Round.format(totalWithTax));	
+	}
+	
+	@Test
+	void testBoxChocolates() {
+		Purchase a = Purchase.parse("1 imported box of chocolates at 10.00");
+		assertEquals("1 imported box of chocolates: 10.50", a.getQuantity() + " " + a.getDescription() + ": " + a.getPricePurchase());
+	}
+	/*
+	@Test
+	void testPerfume() {
+		Purchase a = Purchase.parse("1 imported bottle of perfume at 47.50");
+		assertEquals("1 imported bottle of perfume: 54.65", a.getQuantity() + " " + a.getDescription() + ": " + a.getPricePurchase());
+	}
+	*/
 }

@@ -1,4 +1,4 @@
-package salesTaxesProgram;
+package round;
 
 import java.text.DecimalFormat;
 
