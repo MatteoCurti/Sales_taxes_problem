@@ -20,6 +20,11 @@ public class Purchase extends Product {
 		return this.quantity;
 	}
 	
+	public double getPricePurchase() {
+		double d = this.quantity * this.getPrice();
+		return d;
+	}
+	
 	public static Purchase parse(String inputLine) {
 		
 		ArrayList<String> in = new ArrayList<String>();
