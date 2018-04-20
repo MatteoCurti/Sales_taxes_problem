@@ -20,9 +20,9 @@ public class Purchase extends Product {
 		return this.quantity;
 	}
 	
-	public double getPricePurchase() {
-		double d = this.quantity * this.getPrice();
-		return d;
+	public String getPricePurchase() {
+		double d = this.quantity * TaxCalculator.getPriceWithTax(this);
+		return Round.format(d);
 	}
 	
 	public static Purchase parse(String inputLine) {
