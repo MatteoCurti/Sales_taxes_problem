@@ -20,6 +20,7 @@ public class Product {
 	private boolean isExempt(String description) {
 		
 		if(description.contains("book")) return true;
+		if(description.contains("chocolate")) return true;
 		return false;
 		
 	}
