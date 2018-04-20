@@ -1,12 +1,12 @@
 package salesTaxesProgram;
 
-public class SalesTax extends TaxDecorator {
+public class ImportTax extends TaxDecorator {
 
 	private Product productToDecorate;
 		
-		private final double rate = 0.1;
+		private final double rate = 0.05;
 		
-		public SalesTax(Product product) {
+		public ImportTax(Product product) {
 			super(product);
 			productToDecorate = product;
 		}

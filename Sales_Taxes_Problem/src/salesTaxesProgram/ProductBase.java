@@ -9,6 +9,7 @@ public class ProductBase implements Product {
 	private String description;
 	private double price;
 	private boolean exempt;
+	private boolean imported;
 	
 	public  ProductBase(String description, double price) {
 		if (price<0.0) {
@@ -18,6 +19,14 @@ public class ProductBase implements Product {
 		this.description = description;
 		this.price = price;
 		this.exempt = isExempt(description);
+		this.imported = isImported(description);
+	}
+
+	private boolean isImported(String description) {
+		if(description.contains("imported")) 
+			return true;
+		else 
+			return false;
 	}
 
 	private boolean isExempt(String description) {
@@ -49,6 +58,11 @@ public class ProductBase implements Product {
 	@Override
 	public double getPriceWithTax() {
 		return this.getPrice();
+	}
+
+	@Override
+	public boolean getImport() {
+		return this.imported;
 	}
 	
 }
