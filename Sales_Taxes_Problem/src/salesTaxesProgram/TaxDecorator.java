@@ -14,8 +14,9 @@ public abstract class TaxDecorator implements Product {
 	}
 
 	public double getPriceWithTax(){
-		double tax = Math.round((this.product.getPrice() * this.getRate()) * 100.0)/100.0;
+		double tax = Round.simple(this.product.getPrice() * this.getRate());
 		tax = Round.to05(tax);
-		return Math.round((this.product.getPriceWithTax()*100.0))/100.0 + tax;
+		return Round.simple(this.product.getPriceWithTax()) + tax;
 	}
+	
 }
